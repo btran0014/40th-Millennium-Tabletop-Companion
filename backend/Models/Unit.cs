@@ -2,19 +2,21 @@ namespace backend.Models
 {
     public class Unit
     {
-        public int Id {get; set;}
-        public string Name {get; set;} = string.Empty;
-        public int PointCost {get; set;}
-        public int MovementStat {get; set;}
-        public int ToughnesStat {get; set;}
-        public int SaveStat { get; set;}
-        public int WoundStat {get; set;}
-        public int LeadershipStat {get; set;}
-        public int ObjectiveControlStat {get; set;}
-        public int InvulnerableSaveStat {get; set;}
-
-        //FKR to Faction
-        public int FactionId {get; set;}
-        public Faction? Faction {get; set;}
+        public int Id { get; set; }
+        public int FactionId { get; set; }
+        public Faction Faction { get; set; } = null!;
+        public string? ExternalSlug { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public int PointsCost { get; set; }
+        public int ModelCount { get; set; } = 1;
+        public int Movement { get; set; }
+        public int Toughness { get; set; }
+        public int ArmorSave { get; set; }
+        public int? InvulnSave { get; set; }
+        public int Wounds { get; set; }
+        public int Leadership { get; set; }
+        public int ObjectiveControl { get; set; }
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        public ICollection<Weapon> Weapons { get; set; } = new List<Weapon>();
     }
 }
